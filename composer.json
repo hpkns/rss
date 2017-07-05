@@ -1,0 +1,21 @@
+{
+    "name": "hpkns/rss",
+    "description": "A simple RSS renderer with added bonuses for Laravel users",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Hupkens",
+            "email": "thomas@hupkens.be"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hpkns\\Rss\\": "src/"
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}
