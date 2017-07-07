@@ -1,10 +1,10 @@
 <?php
 
-namespace Hpkns\Rss;
+namespace Hpkns\Feed;
 
 class Feed
 {
-    use Support\Features\HasAttributes;
+    use Support\HasElements;
 
     /**
      * A list of attributes that will be casted as dates.
@@ -23,14 +23,14 @@ class Feed
     protected $items = [];
 
     /**
-     * Initiliaze the feed.
-     *
-     * @param array $attributes
+     * @var string
      */
-    public function __construct($attributes = [])
-    {
-        $this->fill($attributes);
-    }
+    protected $itemModel;
+
+    /**
+     * @var string
+     */
+    protected $rendererModel;
 
     /**
      * Add a new item and return it.
@@ -39,7 +39,8 @@ class Feed
      */
     public function addItem($attributes = [])
     {
-        $item = new FeedItem($attributes);
+        $model = $this->itemModel;
+        $item = new $model($attributes);
 
         $this->items[] = $item;
 
@@ -74,15 +75,14 @@ class Feed
     /**
      * Render the feed.
      *
-     * @param  string $type    This parameter does nothing (yet)
-     * @param  array  $options
+     * @param  array $options
      * @return string
      */
-    public function render($type = 'rss', array $options = [])
+    public function render($options = [])
     {
-       $renderer = new Renderers\RssRenderer();
+        $model = $this->rendererModel;
 
-       return $renderer->render($this, $options);
+        return (new $model($options))->render($this);
     }
 
     /**
@@ -92,22 +92,6 @@ class Feed
      */
     public function __toString()
     {
-        return $this->render('rss', []);
-    }
-
-    /**
-     * SETTERS
-     */
-    public function setAtomLinkAttribute($value)
-    {
-        if (is_string($value)) {
-            $value = [
-                'href' => $value,
-                'rel' => 'self',
-                'type' => 'application/rss+xml',
-            ];
-        }
-
-        $this->attributes['atom:link'] = $value;
+        return $this->render([]);
     }
 }

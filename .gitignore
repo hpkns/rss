@@ -1,3 +1,4 @@
 /vendor
 .Thumbs.db
 ._*
+.DS_Store

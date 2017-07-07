@@ -1,6 +1,6 @@
 {
-    "name": "hpkns/rss",
-    "description": "A simple RSS renderer with added bonuses for Laravel users",
+    "name": "hpkns/feed",
+    "description": "A simple RSS 2.0/Atom renderer with added bonuses for Laravel users",
     "license": "MIT",
     "authors": [
         {
@@ -10,12 +10,15 @@
     ],
     "autoload": {
         "psr-4": {
-            "Hpkns\\Rss\\": "src/"
+            "Hpkns\\Feed\\": "src/"
         },
         "files": [
             "src/Support/helpers.php"
         ]
     },
     "minimum-stability": "stable",
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "mockery/mockery": "^0.9.9"
+    }
 }
