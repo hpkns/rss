@@ -4,7 +4,7 @@ namespace Hpkns\Feed;
 
 class Feed
 {
-    use Support\HasElements;
+    use Support\Features\HasElements;
 
     /**
      * A list of attributes that will be casted as dates.

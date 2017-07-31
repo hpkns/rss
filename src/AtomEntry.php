@@ -2,7 +2,7 @@
 
 namespace  Hpkns\Feed;
 
-use Hpkns\Feed\Support\HasElements;
+use Hpkns\Feed\Support\Features\HasElements;
 
 class AtomEntry
 {

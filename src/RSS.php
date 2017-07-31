@@ -15,4 +15,21 @@ class RSS extends Feed
     protected $dates = [
         'pubDate', 'lastBuildDate',
     ];
+
+    /**
+     * Allow a shorter atom self.
+     *
+     * @param  string $url
+     * @return void
+     */
+    public function setAtomSelfElement($url)
+    {
+        $this->elements[] = [
+            'tag' => 'atom:link',
+            'content' => null,
+            'attributes' => [
+                "href" => $url, "rel" => "self", "type" => "application/rss+xml"
+            ]
+        ];
+    }
 }

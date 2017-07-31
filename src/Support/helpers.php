@@ -7,7 +7,7 @@ if (! function_exists('camel_case')) {
      * @param  string $str
      * @return string
      */
-    function snake_case($str)
+    function camel_case($str)
     {
         $str = ucwords(str_replace(['-', '_', ':'], ' ', $str));
 
