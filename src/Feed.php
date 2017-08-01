@@ -28,6 +28,11 @@ class Feed
     protected $itemModel;
 
     /**
+     * @var
+     */
+    protected $renderer;
+
+    /**
      * @var string
      */
     protected $rendererModel;
@@ -80,9 +85,22 @@ class Feed
      */
     public function render($options = [])
     {
-        $model = $this->rendererModel;
+        return $this->getRendered()->render($this);
+    }
 
-        return (new $model($options))->render($this);
+    /**
+     * Get the feed renderer.
+     *
+     * @return something
+     */
+    public function getRendered()
+    {
+        if (! $this->renderer) {
+            $model = $this->rendererModel;
+            $this->renderer = new $model;
+        }
+
+        return $this->renderer;
     }
 
     /**
